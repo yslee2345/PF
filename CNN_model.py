@@ -1,3 +1,10 @@
+'''
+VGG : conv-relu-conv-relu-maxpooling 구조
+
+
+'''
+
+
 import tensorflow as tf, numpy as np
 
 
@@ -92,8 +99,9 @@ class Model:
             ############################################################################################################
             self.W5 = tf.get_variable(name='W5', shape=[8 * 8 * 256, 625], dtype=tf.float32, initializer=tf.contrib.layers.variance_scaling_initializer())
             self.b5 = tf.Variable(tf.constant(value=0.001, shape=[625], name='b5'))
-            self.L5 = self.parametric_relu(tf.matmul(self.L4, self.W5) + self.b5, 'R5')
-            self.L5 = tf.layers.dropout(inputs=self.L5, rate=self.dropout_rate, training=self.training)
+            self.L5 = tf.matmul(self.L4,self.W5)+self.b5
+            self.L5 = self.parametric_relu(self.L5, 'R5')
+            #self.L5 = tf.layers.dropout(inputs=self.L5, rate=self.dropout_rate, training=self.training)
 
             ############################################################################################################
             ## fully connected 계층 - 2
@@ -105,7 +113,7 @@ class Model:
             self.W6 = tf.get_variable(name='W6', shape=[625, 625], dtype=tf.float32, initializer=tf.contrib.layers.variance_scaling_initializer())
             self.b6 = tf.Variable(tf.constant(value=0.001, shape=[625], name='b6'))
             self.L6 = self.parametric_relu(tf.matmul(self.L5, self.W6) + self.b6, 'R6')
-            self.L6 = tf.layers.dropout(inputs=self.L6, rate=self.dropout_rate, training=self.training)
+            #self.L6 = tf.layers.dropout(inputs=self.L6, rate=self.dropout_rate, training=self.training)
 
             ############################################################################################################
             ## 출력층

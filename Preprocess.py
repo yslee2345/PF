@@ -49,9 +49,9 @@ class preprocessing:
 
 if __name__=='__main__':
     pre = preprocessing('D:\\Python\\PF\\DATA\\rawdata\\')
-    pre.preprocess('data_batch_1',grayscale=True)
-    pre.preprocess('data_batch_2',grayscale=True)
-    pre.preprocess('data_batch_3',grayscale=True)
-    pre.preprocess('data_batch_4',grayscale=True)
-    pre.preprocess('data_batch_5',grayscale=True)
-    pre.preprocess('test_batch',grayscale=True)
+    pre.preprocess('data_batch_1',grayscale=False)
+    pre.preprocess('data_batch_2',grayscale=False)
+    pre.preprocess('data_batch_3',grayscale=False)
+    pre.preprocess('data_batch_4',grayscale=False)
+    pre.preprocess('data_batch_5',grayscale=False)
+    pre.preprocess('test_batch',grayscale=False)
